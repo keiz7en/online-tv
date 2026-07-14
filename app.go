@@ -2,14 +2,10 @@ package main
 
 import (
 	"context"
-	"embed"
 	"fmt"
 	"online-tv/playlist"
 	"online-tv/vlc"
 )
-
-//go:embed vlc-files/*
-var vlcFS embed.FS
 
 type App struct {
 	ctx      context.Context
@@ -25,6 +21,7 @@ func NewApp() *App {
 
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+	a.vlc.Init()
 
 	if err := a.vlc.ExtractVLC(vlcFS); err != nil {
 		fmt.Printf("Warning: %v\n", err)

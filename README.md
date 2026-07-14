@@ -15,6 +15,21 @@ A desktop application for watching live TV channels. Built with Wails, React, an
 
 Download the latest release from [Releases](https://github.com/keiz7en/online-tv/releases).
 
+**Windows:** Extract `onlinetv.zip` and run `onlinetv.exe`. VLC is embedded.
+
+**Linux (.deb):**
+```bash
+sudo apt install vlc
+sudo dpkg -i onlinetv_1.0.0_amd64.deb
+```
+
+**Linux (manual):**
+```bash
+sudo apt install vlc
+chmod +x onlinetv-linux
+./onlinetv-linux
+```
+
 ### Build from Source
 
 **Prerequisites:**
@@ -27,7 +42,7 @@ Download the latest release from [Releases](https://github.com/keiz7en/online-tv
 git clone https://github.com/keiz7en/online-tv.git
 cd online-tv
 
-# Download VLC (required for building)
+# Download VLC (Windows only, for building)
 .\setup-vlc.ps1
 
 # Build
@@ -38,4 +53,4 @@ wails build
 
 - **Backend:** Go + Wails
 - **Frontend:** React + Bootstrap
-- **Player:** VLC (embedded)
+- **Player:** VLC

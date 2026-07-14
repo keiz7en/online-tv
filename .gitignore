@@ -1,5 +1,8 @@
 build/bin/*.exe
 build/bin/*.zip
+build/bin/onlinetv-linux
+build/bin/*.deb
+build/deb/
 node_modules
 frontend/dist
 vlc-files/
