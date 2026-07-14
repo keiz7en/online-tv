@@ -1,0 +1,5 @@
+build/bin/*.exe
+build/bin/*.zip
+node_modules
+frontend/dist
+vlc-files/
