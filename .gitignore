@@ -7,3 +7,4 @@ build/deb/
 node_modules
 frontend/dist
 vlc-files/
+vlc-macos.dmg
