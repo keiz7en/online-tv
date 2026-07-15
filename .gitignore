@@ -1,6 +1,7 @@
 build/bin/*.exe
 build/bin/*.zip
 build/bin/onlinetv-linux
+build/bin/onlinetv-macos
 build/bin/*.deb
 build/deb/
 node_modules
