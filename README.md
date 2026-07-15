@@ -30,6 +30,16 @@ chmod +x onlinetv-linux
 ./onlinetv-linux
 ```
 
+**macOS:**
+```bash
+brew install vlc
+unzip onlinetv-macos.zip
+cd onlinetv-macos
+chmod +x sign-macos.sh
+./sign-macos.sh
+open "Online TV.app"
+```
+
 ### Build from Source
 
 **Prerequisites:**
