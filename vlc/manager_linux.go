@@ -12,10 +12,17 @@ func (m *Manager) Init() {}
 
 func (m *Manager) ExtractVLC(embeddedFS fs.FS) error {
 	if _, err := exec.LookPath("vlc"); err != nil {
-		return fmt.Errorf("vlc not found in PATH. Install with: sudo apt install vlc")
+		return fmt.Errorf("vlc not found. Install with: sudo apt install vlc")
 	}
 	fmt.Println("VLC found in system PATH.")
 	return nil
+}
+
+func (m *Manager) findVLCPath() string {
+	if path, err := exec.LookPath("vlc"); err == nil {
+		return path
+	}
+	return ""
 }
 
 func (m *Manager) Play(url string) error {
@@ -26,9 +33,9 @@ func (m *Manager) Play(url string) error {
 		m.stopInternal()
 	}
 
-	vlcPath, err := exec.LookPath("vlc")
-	if err != nil {
-		return fmt.Errorf("vlc not found: %w", err)
+	vlcPath := m.findVLCPath()
+	if vlcPath == "" {
+		return fmt.Errorf("vlc not found. Install with: sudo apt install vlc")
 	}
 
 	args := []string{
