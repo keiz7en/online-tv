@@ -15,6 +15,7 @@ function App() {
   const [currentChannel, setCurrentChannel] = useState(null);
   const [volume, setVolumeState] = useState(100);
   const [loading, setLoading] = useState(true);
+  const [showWaitNotif, setShowWaitNotif] = useState(true);
 
   useEffect(() => {
     loadPlaylist();
@@ -66,6 +67,7 @@ function App() {
       await PlayChannel(channel.url);
       setPlaying(true);
       setCurrentChannel(channel);
+      setShowWaitNotif(false);
     } catch (err) {
       console.error('Failed to play channel:', err);
     }
@@ -104,6 +106,13 @@ function App() {
 
   return (
     <div id="app" className="app-container">
+      {showWaitNotif && (
+        <div className="wait-notification">
+          <div className="wait-spinner"></div>
+          <span>Wait korun, apnar player open hote time lagbe... Please wait</span>
+        </div>
+      )}
+
       <Header
         searchQuery={searchQuery}
         onSearch={handleSearch}

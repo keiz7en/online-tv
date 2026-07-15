@@ -32,6 +32,7 @@ func (m *Manager) Play(url string) error {
 	}
 
 	args := []string{
+		"--fullscreen",
 		"--network-caching=1500",
 		"--no-video-title-show",
 		"--no-osd",

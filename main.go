@@ -16,10 +16,10 @@ func main() {
 
 	err := wails.Run(&options.App{
 		Title:     "Online TV",
-		Width:     1280,
-		Height:    800,
-		MinWidth:  1024,
-		MinHeight: 700,
+		Width:     800,
+		Height:    550,
+		MinWidth:  600,
+		MinHeight: 450,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
