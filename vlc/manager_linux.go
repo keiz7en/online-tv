@@ -40,7 +40,8 @@ func (m *Manager) Play(url string) error {
 
 	args := []string{
 		"--fullscreen",
-		"--network-caching=1500",
+		"--network-caching=300",
+		"--no-plugins-cache",
 		"--no-video-title-show",
 		"--no-osd",
 		"--no-stats",
