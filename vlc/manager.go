@@ -35,7 +35,10 @@ func (m *Manager) stopInternal() error {
 		m.process.Kill()
 		m.process = nil
 	}
-	m.cmd = nil
+	if m.cmd != nil {
+		m.cmd.Wait()
+		m.cmd = nil
+	}
 	m.isPlaying = false
 	m.currentURL = ""
 	return nil
@@ -90,18 +93,21 @@ func (m *Manager) OnExit(fn func()) {
 func (m *Manager) monitorProcess() {
 	m.mu.Lock()
 	p := m.process
+	cmd := m.cmd
 	m.mu.Unlock()
 
 	if p == nil {
 		return
 	}
 
-	p.Wait()
+	cmd.Wait()
 
 	m.mu.Lock()
-	m.isPlaying = false
-	m.process = nil
-	m.cmd = nil
+	if m.process == p {
+		m.isPlaying = false
+		m.process = nil
+		m.cmd = nil
+	}
 	fn := m.onExit
 	m.mu.Unlock()
 
